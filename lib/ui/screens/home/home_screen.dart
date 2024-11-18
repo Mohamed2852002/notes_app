@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:notes_app/ui/screens/home/widgets/custom_floating_action_button.dart';
+import 'package:notes_app/ui/screens/home/widgets/notes_screen_body.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -6,6 +8,9 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold();
+    return const Scaffold(
+      floatingActionButton: CustomFloatingActionButton(),
+      body: NotesScreenBody(),
+    );
   }
 }
