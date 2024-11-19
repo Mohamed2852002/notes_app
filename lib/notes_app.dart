@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:notes_app/cubits/add_note_cubit/add_note_cubit.dart';
 import 'package:notes_app/themes/app_themes.dart';
-import 'package:notes_app/ui/screens/home/home_screen.dart';
+import 'package:notes_app/ui/screens/home/notes_screen.dart';
 
 class NotesApp extends StatelessWidget {
   const NotesApp({super.key});
@@ -12,11 +14,14 @@ class NotesApp extends StatelessWidget {
       designSize: const Size(360, 690),
       minTextAdapt: true,
       splitScreenMode: true,
-      builder: (context, child) => MaterialApp(
-        theme: AppThemes.appTheme,
-        debugShowCheckedModeBanner: false,
-        initialRoute: HomeScreen.routeName,
-        routes: {HomeScreen.routeName: (context) => const HomeScreen()},
+      builder: (context, child) => BlocProvider(
+        create: (context) => AddNoteCubit(),
+        child: MaterialApp(
+          theme: AppThemes.appTheme,
+          debugShowCheckedModeBanner: false,
+          initialRoute: NotesScreen.routeName,
+          routes: {NotesScreen.routeName: (context) => const NotesScreen()},
+        ),
       ),
     );
   }

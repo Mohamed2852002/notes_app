@@ -5,7 +5,10 @@ import 'package:notes_app/ui/screens/home/widgets/custom_search_button.dart';
 class CustomAppBar extends StatelessWidget {
   const CustomAppBar({
     super.key,
+    required this.title, required this.icon,
   });
+  final String title;
+ final IconData icon;
 
   @override
   Widget build(BuildContext context) {
@@ -13,12 +16,12 @@ class CustomAppBar extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         Text(
-          'Notes',
+          title,
           style: TextStyle(
             fontSize: 26.sp,
           ),
         ),
-        const CustomSearchButton(),
+         CustomSearchButton(icon: icon),
       ],
     );
   }

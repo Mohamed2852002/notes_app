@@ -3,8 +3,9 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class CustomSearchButton extends StatelessWidget {
   const CustomSearchButton({
-    super.key,
+    super.key, required this.icon,
   });
+ final IconData icon;
 
   @override
   Widget build(BuildContext context) {
@@ -18,7 +19,7 @@ class CustomSearchButton extends StatelessWidget {
         width: 45.w,
         height: 45.w,
         child: Icon(
-          Icons.search,
+          icon,
           size: 26.sp,
         ),
       ),
