@@ -18,7 +18,7 @@ class NoteItemWidget extends StatelessWidget {
         Navigator.push(
           context,
           MaterialPageRoute(
-            builder: (context) =>  EditNoteScreen(noteModel: noteModel),
+            builder: (context) => EditNoteScreen(noteModel: noteModel),
           ),
         );
       },
@@ -29,7 +29,7 @@ class NoteItemWidget extends StatelessWidget {
           top: 16,
         ),
         decoration: BoxDecoration(
-          color: const Color(0xffFFCC80),
+          color: Color(noteModel.color),
           borderRadius: BorderRadius.circular(16.r),
         ),
         child: Column(
@@ -73,7 +73,7 @@ class NoteItemWidget extends StatelessWidget {
                 bottom: 26,
               ),
               child: Text(
-                DateFormat.yMd().format(DateTime.now()),
+                DateFormat.yMMMEd().format(noteModel.date),
                 style: TextStyle(
                   color: Colors.black,
                   fontSize: 11.sp,

@@ -13,7 +13,14 @@ class CustomTextField extends StatelessWidget {
   final double? contentPadding;
   @override
   Widget build(BuildContext context) {
-    return TextField(
+    return TextFormField(
+      validator: (value) {
+                  if (value == null || value.isEmpty) {
+                    return 'This Field is Required';
+                  } else {
+                    return null;
+                  }
+                },
       maxLines: null,
       keyboardType: TextInputType.multiline,
       controller: controller,

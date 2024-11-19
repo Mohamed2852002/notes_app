@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:notes_app/ui/screens/home/widgets/custom_search_button.dart';
+import 'package:notes_app/ui/reusable_components/custom_search_button.dart';
 
 class CustomAppBar extends StatelessWidget {
   const CustomAppBar({

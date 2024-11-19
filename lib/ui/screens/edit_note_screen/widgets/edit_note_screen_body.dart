@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:notes_app/models/note_model.dart';
-import 'package:notes_app/ui/screens/create_note_bottom_sheet/widgets/custom_text_field.dart';
-import 'package:notes_app/ui/screens/home/widgets/custom_app_bar.dart';
+import 'package:notes_app/ui/reusable_components/custom_text_field.dart';
+import 'package:notes_app/ui/reusable_components/custom_app_bar.dart';
 
 class EditNoteScreenBody extends StatefulWidget {
   const EditNoteScreenBody({super.key, required this.noteModel});
