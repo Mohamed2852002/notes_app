@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:notes_app/cubits/delete_note_cubit/delete_note_cubit.dart';
 import 'package:notes_app/cubits/read_note_cubit/read_note_cubit.dart';
 import 'package:notes_app/themes/app_themes.dart';
 import 'package:notes_app/ui/screens/home/notes_screen.dart';
@@ -19,9 +18,6 @@ class NotesApp extends StatelessWidget {
         providers: [
           BlocProvider(
             create: (context) => ReadNoteCubit(),
-          ),
-          BlocProvider(
-            create: (context) => DeleteNoteCubit(),
           ),
         ],
         child: MaterialApp(

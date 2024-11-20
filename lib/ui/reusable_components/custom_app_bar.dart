@@ -5,11 +5,13 @@ import 'package:notes_app/ui/reusable_components/custom_search_button.dart';
 class CustomAppBar extends StatelessWidget {
   const CustomAppBar({
     super.key,
-    required this.title, required this.icon,
+    required this.title,
+    required this.icon,
+    this.onTap,
   });
   final String title;
- final IconData icon;
-
+  final IconData icon;
+  final void Function()? onTap;
   @override
   Widget build(BuildContext context) {
     return Row(
@@ -21,7 +23,10 @@ class CustomAppBar extends StatelessWidget {
             fontSize: 26.sp,
           ),
         ),
-         CustomSearchButton(icon: icon),
+        CustomAppBarButton(
+          icon: icon,
+          onTap: onTap,
+        ),
       ],
     );
   }

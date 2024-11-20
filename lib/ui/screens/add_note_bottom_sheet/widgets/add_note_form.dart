@@ -3,8 +3,10 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:notes_app/cubits/add_note_cubit/add_note_cubit.dart';
 import 'package:notes_app/cubits/add_note_cubit/add_note_states.dart';
+import 'package:notes_app/cubits/read_note_cubit/read_note_cubit.dart';
 import 'package:notes_app/models/note_model.dart';
 import 'package:notes_app/ui/reusable_components/custom_text_field.dart';
+import 'package:notes_app/ui/reusable_components/colors_list_view.dart';
 import 'package:notes_app/ui/screens/add_note_bottom_sheet/widgets/custom_button.dart';
 
 class AddNoteForm extends StatefulWidget {
@@ -44,6 +46,8 @@ class _AddNoteFormState extends State<AddNoteForm> {
             contentPadding: 200,
           ),
           const RSizedBox(height: 12),
+          const ColorsListView(),
+          const RSizedBox(height: 16),
           BlocBuilder<AddNoteCubit, AddNoteState>(
             builder: (context, state) {
               return RSizedBox(
@@ -52,12 +56,12 @@ class _AddNoteFormState extends State<AddNoteForm> {
                 child: CustomButton(
                   onBtnPress: () {
                     if (createFormKey.currentState!.validate()) {
-                      createFormKey.currentState!.save();
                       NoteModel noteModel = NoteModel(
                         noteTitle: titleController.text,
                         noteDesc: noteController.text,
                         date: DateTime.now(),
-                        color: Colors.red.value,
+                        color: BlocProvider.of<ReadNoteCubit>(context).currentColor.value,
+                        colorIndex: BlocProvider.of<ReadNoteCubit>(context).colorIndex,
                       );
                       BlocProvider.of<AddNoteCubit>(context).addNote(noteModel);
                     } else {

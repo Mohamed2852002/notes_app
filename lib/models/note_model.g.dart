@@ -21,13 +21,14 @@ class NoteModelAdapter extends TypeAdapter<NoteModel> {
       noteDesc: fields[2] as String,
       date: fields[3] as DateTime,
       color: fields[4] as int,
-    );
+      colorIndex: fields[6] as int?,
+    )..fadingIndex = fields[5] as double?;
   }
 
   @override
   void write(BinaryWriter writer, NoteModel obj) {
     writer
-      ..writeByte(4)
+      ..writeByte(6)
       ..writeByte(1)
       ..write(obj.noteTitle)
       ..writeByte(2)
@@ -35,7 +36,11 @@ class NoteModelAdapter extends TypeAdapter<NoteModel> {
       ..writeByte(3)
       ..write(obj.date)
       ..writeByte(4)
-      ..write(obj.color);
+      ..write(obj.color)
+      ..writeByte(5)
+      ..write(obj.fadingIndex)
+      ..writeByte(6)
+      ..write(obj.colorIndex);
   }
 
   @override
