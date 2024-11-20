@@ -1,16 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class CustomSearchButton extends StatelessWidget {
-  const CustomSearchButton({
-    super.key, required this.icon,
+class CustomAppBarButton extends StatelessWidget {
+  const CustomAppBarButton({
+    super.key,
+    required this.icon,
+    this.onTap,
   });
- final IconData icon;
-
+  final IconData icon;
+  final void Function()? onTap;
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () {},
+      onTap: onTap,
       child: Container(
         decoration: BoxDecoration(
           color: Theme.of(context).hoverColor,

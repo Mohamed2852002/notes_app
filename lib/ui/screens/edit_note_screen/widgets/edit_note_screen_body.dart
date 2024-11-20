@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:notes_app/constants.dart';
+import 'package:notes_app/cubits/read_note_cubit/read_note_cubit.dart';
 import 'package:notes_app/models/note_model.dart';
+import 'package:notes_app/ui/reusable_components/colors_list_view.dart';
 import 'package:notes_app/ui/reusable_components/custom_text_field.dart';
 import 'package:notes_app/ui/reusable_components/custom_app_bar.dart';
 
@@ -32,7 +36,24 @@ class _EditNoteScreenBodyState extends State<EditNoteScreenBody> {
       ),
       child: Column(
         children: [
-          const CustomAppBar(title: 'Edit Note', icon: Icons.check),
+          CustomAppBar(
+            title: 'Edit Note',
+            icon: Icons.check,
+            onTap: () {
+              widget.noteModel.noteTitle = titleController.text;
+              widget.noteModel.noteDesc = noteController.text;
+              widget.noteModel.color =
+                  BlocProvider.of<ReadNoteCubit>(context).currentColor.value;
+              widget.noteModel.save();
+              Navigator.pop(context);
+              BlocProvider.of<ReadNoteCubit>(context).readNotes();
+              showCustomSnackBar(context, 'Note Edited Successfully');
+            },
+          ),
+          const RSizedBox(height: 22),
+          ColorsListView(
+              selectedIndex:
+                  BlocProvider.of<ReadNoteCubit>(context).colorIndex),
           const RSizedBox(height: 16),
           CustomTextField(hintText: 'Title', controller: titleController),
           const RSizedBox(height: 12),
