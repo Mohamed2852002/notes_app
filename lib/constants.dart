@@ -18,3 +18,13 @@ showCustomSnackBar(BuildContext context, String message) {
     ),
   );
 }
+
+List<Color> kColorsList = [
+    const Color(0xffAc3931),
+    const Color(0xffE5D352),
+    Colors.blue,
+    const Color(0xffFFCC80),
+    const Color(0xff537D8D),
+    Colors.green,
+    const Color(0xff482C3D),
+  ];

@@ -42,8 +42,7 @@ class _EditNoteScreenBodyState extends State<EditNoteScreenBody> {
             onTap: () {
               widget.noteModel.noteTitle = titleController.text;
               widget.noteModel.noteDesc = noteController.text;
-              widget.noteModel.color =
-                  BlocProvider.of<ReadNoteCubit>(context).currentColor.value;
+              widget.noteModel.color = kColorsList[widget.noteModel.colorIndex!].value;
               widget.noteModel.save();
               Navigator.pop(context);
               BlocProvider.of<ReadNoteCubit>(context).readNotes();
@@ -52,8 +51,9 @@ class _EditNoteScreenBodyState extends State<EditNoteScreenBody> {
           ),
           const RSizedBox(height: 22),
           ColorsListView(
-              selectedIndex:
-                  BlocProvider.of<ReadNoteCubit>(context).colorIndex),
+            selectedIndex: widget.noteModel.colorIndex,
+            noteModel: widget.noteModel,
+          ),
           const RSizedBox(height: 16),
           CustomTextField(hintText: 'Title', controller: titleController),
           const RSizedBox(height: 12),

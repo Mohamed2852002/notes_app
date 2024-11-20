@@ -9,7 +9,7 @@ import 'package:notes_app/models/note_model.dart';
 class ReadNoteCubit extends Cubit<ReadNoteState> {
   ReadNoteCubit() : super(ReadNoteInitial());
   List<NoteModel> notes = [];
-  Color currentColor = const Color(0xffFFCC80);
+  Color currentColor = const Color(0xffAc3931);
   int colorIndex = 0;
   readNotes() {
     var notesBox = Hive.box<NoteModel>(kNotesBox);
